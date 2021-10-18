@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 // The agreement contract as called by Ricardian Fabric
 
-interface IAgreement {
+interface ISimpleTerms {
       event NewTerms(string url, bytes32 termHash);
       event NewParticipant(address indexed participantAddress, string proof);
 

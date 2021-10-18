@@ -1,13 +1,11 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
-import "../contracts/Agreement.sol";
+import "../contracts/SimpleTerms.sol";
 
-// This is a demonstation of how to use the Agreement contract, note the use of the isAcceptor modifier!zzs
+// This is a demonstation of how to use SimpleTerms, note the use of the checkAcceptance modifier!
 
-
-
-contract HRC20 is Agreement{
+contract HRC20 is SimpleTerms{
     // Public variables of the token
     string public name;
     string public symbol;

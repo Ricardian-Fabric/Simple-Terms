@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 import "hardhat/console.sol";
 
-contract Agreement {
+contract SimpleTerms {
     //The issuer must create the agreement on ricardian fabric
     address public issuer;
 
@@ -35,7 +35,7 @@ contract Agreement {
         bytes32 s,
         string calldata value,
         string calldata url
-    ) public view returns (address) {
+    ) public pure returns (address) {
         // require(value == terms.hash,"Invalid agreement");
         uint256 chainId = 4;
 
