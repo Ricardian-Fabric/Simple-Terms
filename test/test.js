@@ -5,12 +5,12 @@ const { fromRpcSig } = require("ethereumjs-util");
 
 const { recoverTypedSignature_v4 } = require("eth-sig-util");
 
-describe("Agreement", function () {
+describe("SimpleTerms", function () {
   it("should work", async function () {
-    const Agreement = await hre.ethers.getContractFactory("Agreement");
-    const agreement = await Agreement.deploy();
+    const SimpleTerms = await hre.ethers.getContractFactory("SimpleTerms");
+    const simpleTerms = await SimpleTerms.deploy();
 
-    await agreement.deployed();
+    await simpleTerms.deployed();
 
     const url =
       "http://localhost:8080/ipfs/Qma6qaUo6p1YiBcN2a2u1jGogw457Rnhypz62Rhw4EYygp";
@@ -69,14 +69,13 @@ describe("Agreement", function () {
 }`);
 
     console.log("issuer: " + issuer);
-    const result = await agreement.verifySignature(
+    const result = await simpleTerms.verifySignature(
       sigParams.v,
       sigParams.r,
       sigParams.s,
       hash,
       url
     );
-    console.table(result)
     console.log("solidity result: " + result);
     const jsres = await recoverTypedSignature(msgParams, signature);
     console.log("js result: " + jsres);
