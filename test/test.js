@@ -23,7 +23,7 @@ describe("SimpleTerms", function () {
       "0xa6b473661b364087780775adbd3c026b7f1f99a17afe137f3b7eb5d6e505d44927c40190f35a52005f420a1e9244f4a9abdf5ff76a4ff6b76ed12edcf70e946d1c";
 
     const sigParams = getSigParams(signature);
-
+    //TODO: GET VerifyingContract right
     const msgParams = JSON.parse(`{
   "domain": {
     "chainId": "4",

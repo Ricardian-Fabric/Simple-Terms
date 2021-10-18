@@ -3,11 +3,11 @@ pragma solidity ^0.8.0;
 import "hardhat/console.sol";
 
 contract SimpleTerms {
-    //The issuer must create the agreement on ricardian fabric
-    address public issuer;
-
     event NewTerms(string url, string value);
     event NewParticipant(address indexed participantAddress, string proof);
+
+    //The issuer must create the agreement on ricardian fabric
+    address public issuer;
 
     Terms terms;
 
@@ -46,7 +46,7 @@ contract SimpleTerms {
                 keccak256(bytes("Ricardian Fabric")),
                 keccak256(bytes("1")),
                 chainId,
-                address(0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC)
+                address(0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC) //TODO: CHANGE THIS BUT TESTS TOO NEED TO PASS
             )
         );
 
@@ -108,8 +108,9 @@ contract SimpleTerms {
         return agreements[access].signed;
     }
 
-    function getTerms() external view returns (string memory, bytes32) {
-        return (terms.url, terms.value);
+    //Get the terms url to display it so people can visit it and accept it
+    function getTerms() external view returns (string memory) {
+        return (terms.url);
     }
 
     // The modifier allows a contract inheriting from this, to controll access easily based on agreement signing.
