@@ -13,7 +13,7 @@ interface ISimpleTerms {
      * Adds new terms to the smart contract.
      * This is called by Ricardian Fabric when a new agreement is deployed.
      * Should be only called by the issuer.
-     * T, the hash is the precomputed hash of the agreement and the _v,_r,_s are the signature of the issuer.
+     * The hash is the precomputed hash of the agreement and the _v,_r,_s are the signature of the issuer.
      */
     function setTerms(
         string calldata _url,
