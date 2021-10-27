@@ -5,6 +5,8 @@ const { fromRpcSig } = require("ethereumjs-util");
 
 const { recoverTypedSignature_v4 } = require("eth-sig-util");
 
+//TODO: WRITE PROPER SIGNING TEST USING THE EIP712 EXAMPLE
+
 describe("SimpleTerms", function () {
   it("should work", async function () {
     const SimpleTerms = await hre.ethers.getContractFactory("SimpleTerms");
@@ -13,62 +15,23 @@ describe("SimpleTerms", function () {
     await simpleTerms.deployed();
 
     const url =
-      "http://localhost:8080/ipfs/Qma6qaUo6p1YiBcN2a2u1jGogw457Rnhypz62Rhw4EYygp";
+      "http://localhost:8080/ipfs/QmV8xpepZgcS3PvoQUz4mkAAyBufL4Wi6keHDAvVjjCJmp";
 
     const hash =
-      "0xe7008dead711dffd4550d1f724b251feb1ab801855d5a48e4a0f492a5dbb37c1";
+      "0xe29b7c1bd8418177d93e9b6910a53120394979538aa0532f530abad5ddc5b097";
 
-    const issuer = "0x050e8c2dc9454ca53da9efdad6a93bb00c216ca0";
+    const issuer = "0x1CBd3b2770909D4e10f157cABC84C7264073C9Ec";
     const signature =
-      "0xa6b473661b364087780775adbd3c026b7f1f99a17afe137f3b7eb5d6e505d44927c40190f35a52005f420a1e9244f4a9abdf5ff76a4ff6b76ed12edcf70e946d1c";
+      "0xa2ed474adc7e23228cf242bd1d3d15e7a96c883f5970dd216887f35f2484b8984bea776728ba9c767350be3a77bbbbe36bb70555c1efb10913b4383ac41128131c";
 
     const sigParams = getSigParams(signature);
     //TODO: GET VerifyingContract right
-    const msgParams = JSON.parse(`{
-  "domain": {
-    "chainId": "4",
-    "name": "Ricardian Fabric",
-    "verifyingContract": "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",
-    "version": "1"
-  },
-  "types": {
-    "EIP712Domain": [
-      {
-        "name": "name",
-        "type": "string"
-      },
-      {
-        "name": "version",
-        "type": "string"
-      },
-      {
-        "name": "chainId",
-        "type": "uint256"
-      },
-      {
-        "name": "verifyingContract",
-        "type": "address"
-      }
-    ],
-    "doc": [
-      {
-        "name": "value",
-        "type": "string"
-      },
-      {
-        "name": "url",
-        "type": "string"
-      }
-    ]
-  },
-  "primaryType": "doc",
-  "message": {
-    "value": "0xe7008dead711dffd4550d1f724b251feb1ab801855d5a48e4a0f492a5dbb37c1",
-    "url": "http://localhost:8080/ipfs/Qma6qaUo6p1YiBcN2a2u1jGogw457Rnhypz62Rhw4EYygp"
-  }
-}`);
+    const msgParams = JSON.parse(
+      `{"domain":{"chainId":"31337","name":"Ricardian Fabric","verifyingContract":"0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6","version":"1"},"types":{"EIP712Domain":[{"name":"name","type":"string"},{"name":"version","type":"string"},{"name":"chainId","type":"uint256"},{"name":"verifyingContract","type":"address"}],"doc":[{"name":"value","type":"string"},{"name":"url","type":"string"}]},"primaryType":"doc","message":{"value":"0xe29b7c1bd8418177d93e9b6910a53120394979538aa0532f530abad5ddc5b097","url":"http://localhost:8080/ipfs/QmV8xpepZgcS3PvoQUz4mkAAyBufL4Wi6keHDAvVjjCJmp"}}`
+    );
 
     console.log("issuer: " + issuer);
+
     const result = await simpleTerms.verifySignature(
       sigParams.v,
       sigParams.r,
