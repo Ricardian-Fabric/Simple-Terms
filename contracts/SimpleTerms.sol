@@ -1,6 +1,5 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
-import "hardhat/console.sol";
 
 contract SimpleTerms {
     event NewTerms(string url, string value);
@@ -35,8 +34,11 @@ contract SimpleTerms {
         bytes32 s,
         string calldata value,
         string calldata url
-    ) public pure returns (address) {
-        uint256 chainId = 4;
+    ) public view returns (address) {
+        uint256 chainId;
+        assembly {
+            chainId := chainid()
+        }
 
         bytes32 eip712DomainHash = keccak256(
             abi.encode(
@@ -46,7 +48,7 @@ contract SimpleTerms {
                 keccak256(bytes("Ricardian Fabric")),
                 keccak256(bytes("1")),
                 chainId,
-                address(0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC) //TODO: CHANGE THIS BUT TESTS TOO NEED TO PASS
+                address(this)
             )
         );
 
