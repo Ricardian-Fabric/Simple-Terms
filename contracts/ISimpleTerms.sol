@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 
 // The agreement contract as called by Ricardian Fabric
 
+
 interface ISimpleTerms {
       event NewTerms(string url, bytes32 termHash);
       event NewParticipant(address indexed participantAddress, string proof);
@@ -13,7 +14,7 @@ interface ISimpleTerms {
      * Adds new terms to the smart contract.
      * This is called by Ricardian Fabric when a new agreement is deployed.
      * Should be only called by the issuer.
-     * The hash is the precomputed hash of the agreement and the _v,_r,_s are the signature of the issuer.
+     * The _url is the acceptable contracts page and _hash is the precomputed hash of the agreement 
      */
     function setTerms(
         string calldata _url,
@@ -25,7 +26,7 @@ interface ISimpleTerms {
      *  You can get the terms for the contract by calling this function.
      *
      */
-    function getTerms() external view returns (string memory, bytes32);
+    function getTerms() external view returns (string memory);
 
 
 
