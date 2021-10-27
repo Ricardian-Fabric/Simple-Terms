@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
-import "../contracts/SimpleTerms.sol";
+import "../SimpleTerms.sol";
 
 // This is a demonstation of how to use SimpleTerms, note the use of the checkAcceptance modifier!
 
