@@ -12,6 +12,7 @@ It allows adding terms, tracking who accepted it and allows for access control b
 ## Use
 
 You can import the package
+
      import "@ricardianfabric/simpleterms/contracts/SimpleTerms.sol";
 
 Example use:
