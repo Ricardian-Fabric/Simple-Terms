@@ -52,6 +52,6 @@ This project uses hardhat via npx.
 
 ## Error codes
 
-901 : "Only the deployer can call this." 
-902 : "Invalid terms."
-903 : "You must accept the terms first."
+    901 : "Only the deployer can call this." 
+    902 : "Invalid terms."
+    903 : "You must accept the terms first."
