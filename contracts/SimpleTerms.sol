@@ -9,7 +9,7 @@ contract SimpleTerms {
     //The issuer must create the agreement on ricardian fabric
     address public issuer;
 
-    Terms terms;
+    Terms private terms;
 
     struct Terms {
         string url;
@@ -17,7 +17,7 @@ contract SimpleTerms {
     }
 
     // The key here is the hash from the terms hashed with the agreeing address.
-    mapping(bytes32 => Participant) agreements;
+    mapping(bytes32 => Participant) private agreements;
 
     // The participant any wallet that accepts the terms.
     struct Participant {
@@ -33,7 +33,7 @@ contract SimpleTerms {
         external
         returns (bool)
     {
-        require(msg.sender == issuer, "Only the deployer can call this.");
+        require(msg.sender == issuer, "901");
         // If the issuer signature is detected, the terms can be updated
         terms = Terms({url: url, value: keccak256(abi.encodePacked(value))});
         emit NewTerms(url, value);
@@ -44,7 +44,7 @@ contract SimpleTerms {
     function accept(string calldata value) external {
         require(
             keccak256(abi.encodePacked(value)) == terms.value,
-            "Invalid terms"
+            "902"
         );
         bytes32 access = keccak256(abi.encodePacked(msg.sender, terms.value));
         agreements[access] = Participant({signed: true});
@@ -65,7 +65,7 @@ contract SimpleTerms {
     // The modifier allows a contract inheriting from this, to controll access easily based on agreement signing.
     modifier checkAcceptance() {
         bytes32 access = keccak256(abi.encodePacked(msg.sender, terms.value));
-        require(agreements[access].signed, "You must accept the terms first..");
+        require(agreements[access].signed, "903");
         _;
     }
 }
