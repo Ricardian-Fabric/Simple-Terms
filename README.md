@@ -39,7 +39,7 @@ You can get the terms, this will return the url of the acceptable contract.
 
     modifier checkAcceptance();
 
-The modifier is used when inheriting the simpleTerms contract, it's used for access control on the functions that can be only called after accepting the terms.
+The modifier is used when inheriting the simpleTesrms contract, it's used for access control on the functions that can be only called after accepting the terms.
 
 
 ## Tests and Compilation
@@ -48,3 +48,10 @@ This project uses hardhat via npx.
 
     npx hardhat test
     npx hardhat compile
+
+
+## Error codes
+
+901 : "Only the deployer can call this." 
+902 : "Invalid terms."
+903 : "You must accept the terms first."
