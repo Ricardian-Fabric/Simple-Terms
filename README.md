@@ -15,6 +15,7 @@ You can import the package
      import "@ricardianfabric/simpleterms/contracts/SimpleTerms.sol";
 
 Example use:
+
     contract Greeter is SimpleTerms{
         string private greeting;
     
