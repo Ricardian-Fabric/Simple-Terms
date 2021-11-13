@@ -46,7 +46,6 @@ The modifier is used when inheriting the simpleTesrms contract, it's used for ac
 
 This project uses hardhat via npx. 
 
-    npx hardhat test
     npx hardhat compile
 
 
