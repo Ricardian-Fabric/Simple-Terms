@@ -28,7 +28,10 @@ contract SimpleTerms {
         issuer = msg.sender;
     }
 
-    // The setTerms allows an issuer to add new Term to their contract
+    /* The setTerms allows an issuer to add new Term to their contract
+
+       Error code 901: "Only the deployer can call this." 
+    */
     function setTerms(string calldata url, string calldata value)
         external
         returns (bool)
@@ -40,7 +43,10 @@ contract SimpleTerms {
         return true;
     }
 
-    // The accept function is called when a user accepts an agreement represented by the hash
+    /* The accept function is called when a user accepts an agreement represented by the hash
+    
+       Error code 902: "Invalid terms."
+    */
     function accept(string calldata value) external {
         require(
             keccak256(abi.encodePacked(value)) == terms.value,
@@ -62,7 +68,10 @@ contract SimpleTerms {
         return (terms.url);
     }
 
-    // The modifier allows a contract inheriting from this, to controll access easily based on agreement signing.
+    /* The modifier allows a contract inheriting from this, to controll access easily based on agreement signing.
+      
+       Error code 903: "You must accept the terms first."
+    */
     modifier checkAcceptance() {
         bytes32 access = keccak256(abi.encodePacked(msg.sender, terms.value));
         require(agreements[access].signed, "903");
