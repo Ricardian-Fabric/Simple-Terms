@@ -3,6 +3,35 @@
 Simple terms is a Smart contract written in Solidity and used with Ricardian Fabric.
 It allows adding terms, tracking who accepted it and allows for access control by inheritance as shown in the example.
 
+
+## Install
+
+    yarn add @ricardianfabric/simpleterms
+
+
+## Use
+
+You can import the package
+     import "@ricardianfabric/simpleterms/contracts/SimpleTerms.sol";
+
+Example use:
+    contract Greeter is SimpleTerms{
+        string private greeting;
+    
+        constructor(string memory _greeting) {
+            console.log("Deploying a Greeter with greeting:", _greeting);
+            greeting = _greeting;
+        }
+
+        function greet() public view returns (string memory) {
+            return greeting;
+        }
+
+        function setGreeting(string memory _greeting) public checkAcceptance {
+            console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
+            greeting = _greeting;
+        }
+    }
 ## Events
 
     event NewTerms(string url, string value);
