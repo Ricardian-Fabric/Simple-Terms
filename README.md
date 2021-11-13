@@ -11,7 +11,7 @@ It allows adding terms, tracking who accepted it and allows for access control b
 
 ## Use
 
-You can import the package
+You can import the package like this in your solidity file:
 
      import "@ricardianfabric/simpleterms/contracts/SimpleTerms.sol";
 
