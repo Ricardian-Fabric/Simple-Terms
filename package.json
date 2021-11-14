@@ -1,6 +1,6 @@
 {
   "name": "@ricardianfabric/simpleterms",
-  "version": "0.0.2",
+  "version": "0.0.2+1",
   "description": "Simple terms and agreements contract used by Ricardian Fabric",
   "files": [
     "/contracts/**/*.sol"
@@ -27,6 +27,6 @@
     "chai": "^4.2.0",
     "ethereum-waffle": "^3.0.0",
     "ethers": "^5.0.0",
-    "hardhat": "^2.6.5"
+    "hardhat": "^2.6.8"
   }
 }
