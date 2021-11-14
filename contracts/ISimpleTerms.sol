@@ -4,7 +4,7 @@ pragma solidity >= 0.4.22 <0.9.0;
 // The agreement contract as called by Ricardian Fabric
 
 interface ISimpleTerms {
-    event NewTerms(string url, bytes32 value);
+    event NewTerms(string url);
     event NewParticipant(address indexed participantAddress);
 
     /**

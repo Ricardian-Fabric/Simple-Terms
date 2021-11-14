@@ -3,7 +3,7 @@ pragma solidity >= 0.4.22 <0.9.0;
 
 
 contract SimpleTerms {
-    event NewTerms(string url, string value);
+    event NewTerms(string url);
     event NewParticipant(address indexed participant);
 
     //The issuer must create the agreement on ricardian fabric
@@ -39,7 +39,7 @@ contract SimpleTerms {
         require(msg.sender == issuer, "901");
         // If the issuer signature is detected, the terms can be updated
         terms = Terms({url: url, value: keccak256(abi.encodePacked(value))});
-        emit NewTerms(url, value);
+        emit NewTerms(url);
         return true;
     }
 

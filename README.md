@@ -36,7 +36,7 @@ Example use:
     }
 ## Events
 
-    event NewTerms(string url, string value);
+    event NewTerms(string url);
 
 NewTerms is emitted when the terms are set. They can be only set by the issuer, who deployed the contract.
 
