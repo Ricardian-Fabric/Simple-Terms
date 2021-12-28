@@ -85,3 +85,11 @@ This project uses hardhat via npx.
     901 : "Only the deployer can call this." 
     902 : "Invalid terms."
     903 : "You must accept the terms first."
+
+### Publish
+
+To publish the dependency
+
+    npm login
+
+    npm publish
