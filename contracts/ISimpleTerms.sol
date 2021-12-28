@@ -1,4 +1,4 @@
-//SPDX-License-Identifier: Unlicense
+//SPDX-License-Identifier: MIT
 pragma solidity >= 0.4.22 <0.9.0;
 
 // The agreement contract as called by Ricardian Fabric
