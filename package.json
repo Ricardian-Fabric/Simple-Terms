@@ -1,6 +1,6 @@
 {
   "name": "@ricardianfabric/simpleterms",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Simple terms and agreements contract used by Ricardian Fabric",
   "files": [
     "/contracts/**/*.sol"
